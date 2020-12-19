@@ -18,6 +18,7 @@
 		541CD09D258DF71C00D97DCF /* TopNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541CD09C258DF71C00D97DCF /* TopNavigationStackView.swift */; };
 		541CD09F258DFD7000D97DCF /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541CD09E258DFD7000D97DCF /* CardView.swift */; };
 		541CD0A5258E1FD000D97DCF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541CD0A4258E1FD000D97DCF /* User.swift */; };
+		541CD0A8258E25D100D97DCF /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541CD0A7258E25D100D97DCF /* CardViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		541CD09C258DF71C00D97DCF /* TopNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavigationStackView.swift; sourceTree = "<group>"; };
 		541CD09E258DFD7000D97DCF /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		541CD0A4258E1FD000D97DCF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		541CD0A7258E25D100D97DCF /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,12 +68,13 @@
 		541CD081258DEB3300D97DCF /* SwipeMatch */ = {
 			isa = PBXGroup;
 			children = (
-				541CD0A3258E1FC800D97DCF /* Model */,
 				541CD096258DED6300D97DCF /* Extensions */,
+				541CD0A3258E1FC800D97DCF /* Models */,
+				541CD0A6258E25BB00D97DCF /* ViewModels */,
 				541CD099258DF1EE00D97DCF /* Views */,
+				541CD0A9258E269500D97DCF /* Controllers */,
 				541CD082258DEB3300D97DCF /* AppDelegate.swift */,
 				541CD084258DEB3300D97DCF /* SceneDelegate.swift */,
-				541CD086258DEB3300D97DCF /* HomeViewController.swift */,
 				541CD088258DEB3300D97DCF /* Main.storyboard */,
 				541CD08B258DEB3400D97DCF /* Assets.xcassets */,
 				541CD08D258DEB3400D97DCF /* LaunchScreen.storyboard */,
@@ -98,12 +101,28 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		541CD0A3258E1FC800D97DCF /* Model */ = {
+		541CD0A3258E1FC800D97DCF /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				541CD0A4258E1FD000D97DCF /* User.swift */,
 			);
-			path = Model;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		541CD0A6258E25BB00D97DCF /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				541CD0A7258E25D100D97DCF /* CardViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		541CD0A9258E269500D97DCF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				541CD086258DEB3300D97DCF /* HomeViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,6 +204,7 @@
 				541CD09D258DF71C00D97DCF /* TopNavigationStackView.swift in Sources */,
 				541CD098258DED7100D97DCF /* Extensions+UIView.swift in Sources */,
 				541CD085258DEB3300D97DCF /* SceneDelegate.swift in Sources */,
+				541CD0A8258E25D100D97DCF /* CardViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
