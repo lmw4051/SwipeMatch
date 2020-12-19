@@ -9,6 +9,7 @@
 import UIKit
 
 class HomeBottomControlsStackView: UIStackView {
+  // MARK: - View Life Cycles
   override init(frame: CGRect) {
     super.init(frame: frame)
     

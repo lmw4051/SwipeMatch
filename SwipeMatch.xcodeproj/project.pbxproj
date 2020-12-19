@@ -16,6 +16,7 @@
 		541CD098258DED7100D97DCF /* Extensions+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541CD097258DED7100D97DCF /* Extensions+UIView.swift */; };
 		541CD09B258DF20B00D97DCF /* HomeBottomControlsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541CD09A258DF20B00D97DCF /* HomeBottomControlsStackView.swift */; };
 		541CD09D258DF71C00D97DCF /* TopNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541CD09C258DF71C00D97DCF /* TopNavigationStackView.swift */; };
+		541CD09F258DFD7000D97DCF /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541CD09E258DFD7000D97DCF /* CardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		541CD097258DED7100D97DCF /* Extensions+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIView.swift"; sourceTree = "<group>"; };
 		541CD09A258DF20B00D97DCF /* HomeBottomControlsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBottomControlsStackView.swift; sourceTree = "<group>"; };
 		541CD09C258DF71C00D97DCF /* TopNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavigationStackView.swift; sourceTree = "<group>"; };
+		541CD09E258DFD7000D97DCF /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				541CD09A258DF20B00D97DCF /* HomeBottomControlsStackView.swift */,
+				541CD09E258DFD7000D97DCF /* CardView.swift */,
 				541CD09C258DF71C00D97DCF /* TopNavigationStackView.swift */,
 			);
 			path = Views;
@@ -163,6 +166,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				541CD09F258DFD7000D97DCF /* CardView.swift in Sources */,
 				541CD087258DEB3300D97DCF /* ViewController.swift in Sources */,
 				541CD083258DEB3300D97DCF /* AppDelegate.swift in Sources */,
 				541CD09B258DF20B00D97DCF /* HomeBottomControlsStackView.swift in Sources */,
