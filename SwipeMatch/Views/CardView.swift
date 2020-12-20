@@ -24,6 +24,8 @@ class CardView: UIView {
         barsStackView.addArrangedSubview(barView)
       }
       barsStackView.arrangedSubviews.first?.backgroundColor = .white
+      
+      setupImageIndexObserver()
     }
   }
   
@@ -33,11 +35,7 @@ class CardView: UIView {
   
   // Configurations
   fileprivate let threshold: CGFloat = 80
-  
   fileprivate let barsStackView = UIStackView()
-  
-  fileprivate var imageIndex = 0
-  
   fileprivate let barDeselectedcolor = UIColor(white: 0, alpha: 0.1)
   
   // MARK: - View Life Cycles
@@ -77,17 +75,10 @@ class CardView: UIView {
     let shouldAdvanceNextPhoto = tapLocation.x > frame.width / 2 ? true : false
     
     if shouldAdvanceNextPhoto {
-      imageIndex = min(imageIndex + 1, cardViewModel.imageNames.count - 1)
+      cardViewModel.advanceToNextPhoto()
     } else {
-      imageIndex = max(0, imageIndex - 1)
-    }
-    
-    let imageName = cardViewModel.imageNames[imageIndex]
-    imageView.image = UIImage(named: imageName)
-    barsStackView.arrangedSubviews.forEach { v in
-      v.backgroundColor = barDeselectedcolor
-    }
-    barsStackView.arrangedSubviews[imageIndex].backgroundColor = .white
+      cardViewModel.goToPreviousPhoto()
+    }    
   }
   
   // MARK: - Helper Methods
@@ -160,5 +151,18 @@ class CardView: UIView {
   override func layoutSubviews() {
     // The CardFrame data will be get here
     gradientLayer.frame = self.frame
+  }
+  
+  fileprivate func setupImageIndexObserver() {
+    cardViewModel.imageIndexObserver = { [weak self] (idx ,image) in
+      print("setupImageIndexObserver")
+      guard let self = self else { return }
+      self.imageView.image = image
+      
+      self.barsStackView.arrangedSubviews.forEach { v in
+        v.backgroundColor = self.barDeselectedcolor
+      }
+      self.barsStackView.arrangedSubviews[idx].backgroundColor = .white
+    }
   }
 }
