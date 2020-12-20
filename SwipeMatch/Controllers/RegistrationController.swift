@@ -20,6 +20,9 @@ class RegistrationController: UIViewController {
     button.setTitleColor(.black, for: .normal)
     button.heightAnchor.constraint(equalToConstant: 275).isActive = true
     button.layer.cornerRadius = 16
+    button.addTarget(self, action: #selector(handleSelectPhoto), for: .touchUpInside)
+    button.imageView?.contentMode = .scaleAspectFill
+    button.clipsToBounds = true
     return button
   }()
   
@@ -145,20 +148,25 @@ class RegistrationController: UIViewController {
   }
   
   fileprivate func setupRegistrationViewModelObserver() {
-    registrationViewModel.isFormValidObserver = { [weak self] (isFormValid) in
-      guard let self = self else { return }
-      print("Form is changing, is it valid?", isFormValid)
-      
+    registrationViewModel.bindableIsFormValid.bind { [unowned self] isFormValid in
+      guard let isFormValid = isFormValid else { return }
       self.registerButton.isEnabled = isFormValid
       
-      if isFormValid {
-        self.registerButton.backgroundColor = #colorLiteral(red: 0.8235294118, green: 0, blue: 0.3254901961, alpha: 1)
-        self.registerButton.setTitleColor(.white, for: .normal)
-      } else {
-        self.registerButton.backgroundColor = .lightGray
-        self.registerButton.setTitleColor(.gray, for: .normal)
-      }
+      self.registerButton.backgroundColor = isFormValid ? #colorLiteral(red: 0.8235294118, green: 0, blue: 0.3254901961, alpha: 1) : .lightGray
+      self.registerButton.setTitleColor(isFormValid ? .white : .gray, for: .normal)
     }
+    
+    registrationViewModel.bindableImage.bind { [unowned self] img in
+      self.selectPhotoButton.setImage(img?.withRenderingMode(.alwaysOriginal), for: .normal)
+    }
+  }
+  
+  fileprivate func showHUDWithError(error: Error) {
+    let hud = JGProgressHUD(style: .dark)
+    hud.textLabel.text = "Failed registration"
+    hud.detailTextLabel.text = error.localizedDescription
+    hud.show(in: self.view)
+    hud.dismiss(afterDelay: 4)
   }
   
   // MARK: - Selector Methods
@@ -215,11 +223,25 @@ class RegistrationController: UIViewController {
     }
   }
   
-  fileprivate func showHUDWithError(error: Error) {
-    let hud = JGProgressHUD(style: .dark)
-    hud.textLabel.text = "Failed registration"
-    hud.detailTextLabel.text = error.localizedDescription
-    hud.show(in: self.view)
-    hud.dismiss(afterDelay: 4)
+  @objc fileprivate func handleSelectPhoto() {
+    print("handleSelectPhoto")
+    let imagePickerController = UIImagePickerController()
+    imagePickerController.delegate = self
+    present(imagePickerController, animated: true)
+  }
+}
+
+extension RegistrationController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    let image = info[.originalImage] as? UIImage
+    
+//    registrationViewModel.image = image
+    registrationViewModel.bindableImage.value = image
+    
+    dismiss(animated: true, completion: nil)
+  }
+  
+  func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    dismiss(animated: true)
   }
 }
