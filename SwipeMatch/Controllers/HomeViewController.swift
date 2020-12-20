@@ -29,9 +29,19 @@ class HomeViewController: UIViewController {
 
   // MARK: - View Life Cycles
   override func viewDidLoad() {
-    super.viewDidLoad()      
+    super.viewDidLoad()
+    
+    topStackView.settingsButton.addTarget(self, action: #selector(handleSettings), for: .touchUpInside)
+    
     setupLayout()
     setupDummyCards()
+  }
+  
+  // MARK: - Selector Methods
+  @objc func handleSettings() {
+    print("handleSettings")
+    let registraitonController = RegistrationController()
+    present(registraitonController, animated: true)
   }
   
   // MARK: - Helper Methods

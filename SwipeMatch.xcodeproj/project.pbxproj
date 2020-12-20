@@ -20,6 +20,8 @@
 		541CD0A5258E1FD000D97DCF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541CD0A4258E1FD000D97DCF /* User.swift */; };
 		541CD0A8258E25D100D97DCF /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541CD0A7258E25D100D97DCF /* CardViewModel.swift */; };
 		541CD0AB258E2CE600D97DCF /* Advertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541CD0AA258E2CE600D97DCF /* Advertiser.swift */; };
+		541CD0AD258F17E800D97DCF /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541CD0AC258F17E800D97DCF /* RegistrationController.swift */; };
+		541CD0AF258F1D5900D97DCF /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541CD0AE258F1D5900D97DCF /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		541CD0A4258E1FD000D97DCF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		541CD0A7258E25D100D97DCF /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		541CD0AA258E2CE600D97DCF /* Advertiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertiser.swift; sourceTree = "<group>"; };
+		541CD0AC258F17E800D97DCF /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
+		541CD0AE258F1D5900D97DCF /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 				541CD09A258DF20B00D97DCF /* HomeBottomControlsStackView.swift */,
 				541CD09E258DFD7000D97DCF /* CardView.swift */,
 				541CD09C258DF71C00D97DCF /* TopNavigationStackView.swift */,
+				541CD0AE258F1D5900D97DCF /* CustomTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -124,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				541CD086258DEB3300D97DCF /* HomeViewController.swift */,
+				541CD0AC258F17E800D97DCF /* RegistrationController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -205,7 +211,9 @@
 				541CD083258DEB3300D97DCF /* AppDelegate.swift in Sources */,
 				541CD09B258DF20B00D97DCF /* HomeBottomControlsStackView.swift in Sources */,
 				541CD0A5258E1FD000D97DCF /* User.swift in Sources */,
+				541CD0AD258F17E800D97DCF /* RegistrationController.swift in Sources */,
 				541CD09D258DF71C00D97DCF /* TopNavigationStackView.swift in Sources */,
+				541CD0AF258F1D5900D97DCF /* CustomTextField.swift in Sources */,
 				541CD098258DED7100D97DCF /* Extensions+UIView.swift in Sources */,
 				541CD085258DEB3300D97DCF /* SceneDelegate.swift in Sources */,
 				541CD0A8258E25D100D97DCF /* CardViewModel.swift in Sources */,
