@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,9 +23,12 @@
 		541CD0AD258F17E800D97DCF /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541CD0AC258F17E800D97DCF /* RegistrationController.swift */; };
 		541CD0AF258F1D5900D97DCF /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541CD0AE258F1D5900D97DCF /* CustomTextField.swift */; };
 		541CD0B1258F3C5F00D97DCF /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541CD0B0258F3C5F00D97DCF /* RegistrationViewModel.swift */; };
+		541CD0B3258F6A9600D97DCF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 541CD0B2258F6A9600D97DCF /* GoogleService-Info.plist */; };
+		DEB2B66AA7C953BD73985FDF /* Pods_SwipeMatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F0F597C962C6956D32A48E3 /* Pods_SwipeMatch.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F0F597C962C6956D32A48E3 /* Pods_SwipeMatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwipeMatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		541CD07F258DEB3300D97DCF /* SwipeMatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwipeMatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		541CD082258DEB3300D97DCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		541CD084258DEB3300D97DCF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -44,6 +47,9 @@
 		541CD0AC258F17E800D97DCF /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		541CD0AE258F1D5900D97DCF /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		541CD0B0258F3C5F00D97DCF /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		541CD0B2258F6A9600D97DCF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9221340A45A5A6B59D63F410 /* Pods-SwipeMatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwipeMatch.release.xcconfig"; path = "Target Support Files/Pods-SwipeMatch/Pods-SwipeMatch.release.xcconfig"; sourceTree = "<group>"; };
+		B1B6CC8469188B761D584501 /* Pods-SwipeMatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwipeMatch.debug.xcconfig"; path = "Target Support Files/Pods-SwipeMatch/Pods-SwipeMatch.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,17 +57,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEB2B66AA7C953BD73985FDF /* Pods_SwipeMatch.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		45AB5C661CDE59187F657FFC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B1B6CC8469188B761D584501 /* Pods-SwipeMatch.debug.xcconfig */,
+				9221340A45A5A6B59D63F410 /* Pods-SwipeMatch.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		50A12F1E9E1E9C7DCEA551F8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1F0F597C962C6956D32A48E3 /* Pods_SwipeMatch.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		541CD076258DEB3300D97DCF = {
 			isa = PBXGroup;
 			children = (
 				541CD081258DEB3300D97DCF /* SwipeMatch */,
 				541CD080258DEB3300D97DCF /* Products */,
+				45AB5C661CDE59187F657FFC /* Pods */,
+				50A12F1E9E1E9C7DCEA551F8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,6 +113,7 @@
 				541CD08B258DEB3400D97DCF /* Assets.xcassets */,
 				541CD08D258DEB3400D97DCF /* LaunchScreen.storyboard */,
 				541CD090258DEB3400D97DCF /* Info.plist */,
+				541CD0B2258F6A9600D97DCF /* GoogleService-Info.plist */,
 			);
 			path = SwipeMatch;
 			sourceTree = "<group>";
@@ -144,9 +171,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 541CD093258DEB3400D97DCF /* Build configuration list for PBXNativeTarget "SwipeMatch" */;
 			buildPhases = (
+				66BC79242664B402DD406D1D /* [CP] Check Pods Manifest.lock */,
 				541CD07B258DEB3300D97DCF /* Sources */,
 				541CD07C258DEB3300D97DCF /* Frameworks */,
 				541CD07D258DEB3300D97DCF /* Resources */,
+				A349CF55A63E51E61099220E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -196,12 +225,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				541CD08F258DEB3400D97DCF /* LaunchScreen.storyboard in Resources */,
+				541CD0B3258F6A9600D97DCF /* GoogleService-Info.plist in Resources */,
 				541CD08C258DEB3400D97DCF /* Assets.xcassets in Resources */,
 				541CD08A258DEB3300D97DCF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		66BC79242664B402DD406D1D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SwipeMatch-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A349CF55A63E51E61099220E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SwipeMatch/Pods-SwipeMatch-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SwipeMatch/Pods-SwipeMatch-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SwipeMatch/Pods-SwipeMatch-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		541CD07B258DEB3300D97DCF /* Sources */ = {
@@ -362,11 +434,13 @@
 		};
 		541CD094258DEB3400D97DCF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1B6CC8469188B761D584501 /* Pods-SwipeMatch.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RNX3GY6LZ6;
 				INFOPLIST_FILE = SwipeMatch/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -380,11 +454,13 @@
 		};
 		541CD095258DEB3400D97DCF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9221340A45A5A6B59D63F410 /* Pods-SwipeMatch.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RNX3GY6LZ6;
 				INFOPLIST_FILE = SwipeMatch/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
