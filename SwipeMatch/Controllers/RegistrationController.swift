@@ -43,6 +43,17 @@ class RegistrationController: UIViewController {
     return tf
   }()    
   
+  let registerButton: UIButton = {
+    let button = UIButton(type: .system)
+    button.setTitle("Register", for: .normal)
+    button.setTitleColor(.white, for: .normal)
+    button.titleLabel?.font = .systemFont(ofSize: 16, weight: .heavy)
+    button.backgroundColor = #colorLiteral(red: 0.8235294118, green: 0, blue: 0.3254901961, alpha: 1)
+    button.heightAnchor.constraint(equalToConstant: 44).isActive = true
+    button.layer.cornerRadius = 22
+    return button
+  }()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -53,7 +64,8 @@ class RegistrationController: UIViewController {
       selectPhotoButton,
       fullNameTextField,
       emailTextField,
-      passwordTextField
+      passwordTextField,
+      registerButton
     ])
     view.addSubview(stackView)
     stackView.axis = .vertical
