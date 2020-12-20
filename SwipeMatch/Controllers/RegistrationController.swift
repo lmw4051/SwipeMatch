@@ -85,6 +85,8 @@ class RegistrationController: UIViewController {
   
   let registrationViewModel = RegistrationViewModel()
   
+  let registeringHUD = JGProgressHUD(style: .dark)
+  
   // MARK: - View Life Cycles
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -148,7 +150,9 @@ class RegistrationController: UIViewController {
   }
   
   fileprivate func setupRegistrationViewModelObserver() {
-    registrationViewModel.bindableIsFormValid.bind { [unowned self] isFormValid in
+    registrationViewModel.bindableIsFormValid.bind { [weak self] isFormValid in
+      guard let self = self else { return }
+      
       guard let isFormValid = isFormValid else { return }
       self.registerButton.isEnabled = isFormValid
       
@@ -156,12 +160,25 @@ class RegistrationController: UIViewController {
       self.registerButton.setTitleColor(isFormValid ? .white : .gray, for: .normal)
     }
     
-    registrationViewModel.bindableImage.bind { [unowned self] img in
+    registrationViewModel.bindableImage.bind { [weak self] img in
+      guard let self = self else { return }
       self.selectPhotoButton.setImage(img?.withRenderingMode(.alwaysOriginal), for: .normal)
+    }
+    
+    registrationViewModel.bindableIsRegistering.bind { [weak self] isRegistering in
+      guard let self = self else { return }
+      
+      if isRegistering == true {
+        self.registeringHUD.textLabel.text = "Register"
+        self.registeringHUD.show(in: self.view)
+      } else {
+        self.registeringHUD.dismiss()
+      }
     }
   }
   
   fileprivate func showHUDWithError(error: Error) {
+    registeringHUD.dismiss()
     let hud = JGProgressHUD(style: .dark)
     hud.textLabel.text = "Failed registration"
     hud.detailTextLabel.text = error.localizedDescription
@@ -208,18 +225,15 @@ class RegistrationController: UIViewController {
   }
   
   @objc fileprivate func handleRegister() {
-    self.handleTapDismiss()
-    guard let email = emailTextField.text else { return }
-    guard let password = passwordTextField.text else { return }
-    
-    Auth.auth().createUser(withEmail: email, password: password) { (res, err) in
+    self.handleTapDismiss()    
+    registrationViewModel.performRegistration { [weak self] err in
+      guard let self = self else { return }
+      
       if let err = err {
-        print(err)
         self.showHUDWithError(error: err)
         return
       }
-      
-      print("Successfully registered user:", res?.user.uid ?? "")
+      print("Finished registering our user")
     }
   }
   
@@ -234,10 +248,7 @@ class RegistrationController: UIViewController {
 extension RegistrationController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
     let image = info[.originalImage] as? UIImage
-    
-//    registrationViewModel.image = image
     registrationViewModel.bindableImage.value = image
-    
     dismiss(animated: true, completion: nil)
   }
   
