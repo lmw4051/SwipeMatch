@@ -6,7 +6,7 @@ target 'SwipeMatch' do
   use_frameworks!
 
   # Pods for SwipeMatch
-  pod 'Firebase/Database'
+  pod 'Firebase/Firestore'
   pod 'Firebase/Auth’
   pod 'Firebase/Storage’
   pod 'Firebase/Core’
