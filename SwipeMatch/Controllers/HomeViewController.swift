@@ -36,8 +36,9 @@ class HomeViewController: UIViewController {
   // MARK: - Selector Methods
   @objc func handleSettings() {
     print("handleSettings")
-    let registraitonController = RegistrationController()
-    present(registraitonController, animated: true)
+    let settingsController = SettingsController()
+    let navController = UINavigationController(rootViewController: settingsController)
+    present(navController, animated: true)
   }
   
   @objc fileprivate func handleRefresh() {
