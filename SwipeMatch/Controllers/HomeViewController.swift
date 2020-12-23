@@ -43,6 +43,7 @@ class HomeViewController: UIViewController {
     
     if Auth.auth().currentUser == nil {
       let registrationController = RegistrationController()
+      registrationController.delegate = self
       let navController = UINavigationController(rootViewController: registrationController)
       navController.modalPresentationStyle = .fullScreen
       present(navController, animated: true)
@@ -72,6 +73,7 @@ class HomeViewController: UIViewController {
     let settingsController = SettingsController()
     settingsController.delegate = self
     let navController = UINavigationController(rootViewController: settingsController)
+    navController.modalPresentationStyle = .fullScreen
     present(navController, animated: true)
   }
   
@@ -103,19 +105,15 @@ class HomeViewController: UIViewController {
   }
   
   fileprivate func fetchUsersFromFirestore() {
-    guard let minAge = user?.minSeekingAge,
-      let maxAge = user?.maxSeekingAge else { return }
+//    guard let minAge = user?.minSeekingAge,
+//      let maxAge = user?.maxSeekingAge else { return }
     
-    let hud = JGProgressHUD(style: .dark)
-    hud.textLabel.text = "Fetching Users"
-    hud.show(in: view)
+//    let query = Firestore.firestore().collection("users").whereField("age", isGreaterThanOrEqualTo: minAge).whereField("age", isLessThanOrEqualTo: maxAge)
     
-    // Introduce pagination here to page through 2 users at a time
-//    let query = Firestore.firestore().collection("users").order(by: "uid").start(after: [lastFetchedUser?.uid ?? ""]).limit(to: 2)
-    let query = Firestore.firestore().collection("users").whereField("age", isGreaterThanOrEqualTo: minAge).whereField("age", isLessThanOrEqualTo: maxAge)
+    let query = Firestore.firestore().collection("users")
     
     query.getDocuments { (snapshot, err) in
-      hud.dismiss()
+      self.hud.dismiss()
       
       if let err = err {
         print("Failed to fetch user:", err)
@@ -125,9 +123,13 @@ class HomeViewController: UIViewController {
       snapshot?.documents.forEach({ documentSnapshot in
         let userDictionary = documentSnapshot.data()
         let user = User(dictionary: userDictionary)
-        self.cardViewModels.append(user.toCardViewModel())
-        self.lastFetchedUser = user
-        self.setupCardFromUser(user: user)
+        
+        if user.uid != Auth.auth().currentUser?.uid {
+          self.setupCardFromUser(user: user)
+        }
+        
+//        self.cardViewModels.append(user.toCardViewModel())
+//        self.lastFetchedUser = user
       })
     }
   }
@@ -143,6 +145,12 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: SettingsControllerDelegate {
   func didSaveSettings() {
+    fetchCurrentUser()
+  }
+}
+
+extension HomeViewController: LoginControllerDelegate {
+  func didFinishLoggingIn() {
     fetchCurrentUser()
   }
 }

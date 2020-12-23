@@ -12,6 +12,8 @@ import JGProgressHUD
 
 class RegistrationController: UIViewController {
   // MARK: - Instance Properties
+  var delegate: LoginControllerDelegate?
+  
   let selectPhotoButton: UIButton = {
     let button = UIButton(type: .system)
     button.setTitle("Select Photo", for: .normal)
@@ -91,7 +93,8 @@ class RegistrationController: UIViewController {
   }()
   
   @objc fileprivate func handleGoToLogin() {
-    let loginController = UIViewController()
+    let loginController = LoginController()
+    loginController.delegate = delegate
     navigationController?.pushViewController(loginController, animated: true)
   }
   
