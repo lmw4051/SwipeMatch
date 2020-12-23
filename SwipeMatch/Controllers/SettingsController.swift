@@ -11,6 +11,10 @@ import Firebase
 import JGProgressHUD
 import SDWebImage
 
+protocol SettingsControllerDelegate {
+  func didSaveSettings()
+}
+
 class CustomImagePickerController: UIImagePickerController {
   var imageButton: UIButton?
 }
@@ -23,6 +27,9 @@ class HeaderLabel: UILabel {
 
 class SettingsController: UITableViewController {
   // MARK: - Instance Properties
+  
+  var delegate: SettingsControllerDelegate?
+  
   // In order to use createButton helper method we need to declare as lazy var
   lazy var image1Button = createButton(selector: #selector(handleSelectPhoto))
   lazy var image2Button = createButton(selector: #selector(handleSelectPhoto))
@@ -155,6 +162,10 @@ class SettingsController: UITableViewController {
       }
       
       print("Finished saving user info")
+      self.dismiss(animated: true) {
+        print("Dismissal Complete")
+        self.delegate?.didSaveSettings()
+      }
     }
   }
   
