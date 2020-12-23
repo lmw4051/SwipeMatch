@@ -11,10 +11,12 @@ import UIKit
 class CustomTextField: UITextField {
   // MARK: - Instance Properties
   let padding: CGFloat
+  let height: CGFloat
   
   // MARK: - View Life Cycles
-  init(padding: CGFloat) {
+  init(padding: CGFloat, height: CGFloat) {
     self.padding = padding
+    self.height = height
     super.init(frame: .zero)
     layer.cornerRadius = 25
     backgroundColor = .white

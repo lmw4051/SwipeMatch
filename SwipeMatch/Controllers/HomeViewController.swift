@@ -37,9 +37,20 @@ class HomeViewController: UIViewController {
 //    fetchUsersFromFirestore()
   }
   
-  fileprivate func fetchCurrentUser() {
-    guard let uid = Auth.auth().currentUser?.uid else { return }
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    print("HomeController viewDidAppear")
     
+    if Auth.auth().currentUser == nil {
+      let registrationController = RegistrationController()
+      let navController = UINavigationController(rootViewController: registrationController)
+      navController.modalPresentationStyle = .fullScreen
+      present(navController, animated: true)
+    }
+  }
+  
+  // MARK: - Helper Methods
+  fileprivate func fetchCurrentUser() {
     hud.textLabel.text = "Loading"
     hud.show(in: view)
     
