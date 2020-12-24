@@ -159,6 +159,7 @@ extension HomeViewController: LoginControllerDelegate {
 extension HomeViewController: CardViewDelegate {
   func didTapMoreInfo() {
     let userDetailsController = UserDetailsController()
+    userDetailsController.modalPresentationStyle = .fullScreen
     present(userDetailsController, animated: true)
   }
 }
