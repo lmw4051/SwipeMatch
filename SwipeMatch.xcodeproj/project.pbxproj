@@ -33,6 +33,7 @@
 		541CD0C52593A16100D97DCF /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541CD0C42593A16100D97DCF /* LoginViewModel.swift */; };
 		541CD0C825945DB000D97DCF /* UserDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541CD0C725945DB000D97DCF /* UserDetailsController.swift */; };
 		541CD0CA259478F900D97DCF /* SwipingPhotosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541CD0C9259478F900D97DCF /* SwipingPhotosController.swift */; };
+		541CD0CD2594DE7C00D97DCF /* PhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541CD0CC2594DE7C00D97DCF /* PhotoController.swift */; };
 		DEB2B66AA7C953BD73985FDF /* Pods_SwipeMatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F0F597C962C6956D32A48E3 /* Pods_SwipeMatch.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,7 @@
 		541CD0C42593A16100D97DCF /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		541CD0C725945DB000D97DCF /* UserDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsController.swift; sourceTree = "<group>"; };
 		541CD0C9259478F900D97DCF /* SwipingPhotosController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingPhotosController.swift; sourceTree = "<group>"; };
+		541CD0CC2594DE7C00D97DCF /* PhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoController.swift; sourceTree = "<group>"; };
 		9221340A45A5A6B59D63F410 /* Pods-SwipeMatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwipeMatch.release.xcconfig"; path = "Target Support Files/Pods-SwipeMatch/Pods-SwipeMatch.release.xcconfig"; sourceTree = "<group>"; };
 		B1B6CC8469188B761D584501 /* Pods-SwipeMatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwipeMatch.debug.xcconfig"; path = "Target Support Files/Pods-SwipeMatch/Pods-SwipeMatch.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -202,6 +204,7 @@
 			children = (
 				541CD0C725945DB000D97DCF /* UserDetailsController.swift */,
 				541CD0C9259478F900D97DCF /* SwipingPhotosController.swift */,
+				541CD0CC2594DE7C00D97DCF /* PhotoController.swift */,
 			);
 			path = "User Details";
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				541CD0C325939F1100D97DCF /* LoginController.swift in Sources */,
+				541CD0CD2594DE7C00D97DCF /* PhotoController.swift in Sources */,
 				541CD0BD259339E600D97DCF /* Firebase+Utils.swift in Sources */,
 				541CD0AB258E2CE600D97DCF /* Advertiser.swift in Sources */,
 				541CD09F258DFD7000D97DCF /* CardView.swift in Sources */,

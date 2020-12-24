@@ -43,7 +43,7 @@ class UserDetailsController: UIViewController {
   lazy var superLikeButton = self.createButton(image: #imageLiteral(resourceName: "super_like_circle"), selector: #selector(handleDislike))
   lazy var likeButton = self.createButton(image: #imageLiteral(resourceName: "like_circle"), selector: #selector(handleDislike))
   
-  let swipingPhotosController = SwipingPhotosController(transitionStyle: .scroll, navigationOrientation: .horizontal)
+  let swipingPhotosController = SwipingPhotosController()
   
   // MARK: - View Life Cycles
   override func viewDidLoad() {
