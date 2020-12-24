@@ -9,8 +9,14 @@
 import UIKit
 import SDWebImage
 
+protocol CardViewDelegate {
+  func didTapMoreInfo()
+}
+
 class CardView: UIView {
   // MARK: - Instance Properties
+  var delegate: CardViewDelegate?
+  
   var cardViewModel: CardViewModel! {
     didSet {
       // accessing index 0 will crash if imageNames.count == 0
@@ -33,6 +39,13 @@ class CardView: UIView {
       setupImageIndexObserver()
     }
   }
+  
+  fileprivate let moreInfoButton: UIButton = {
+    let button = UIButton(type: .system)
+    button.setImage(#imageLiteral(resourceName: "info_icon").withRenderingMode(.alwaysOriginal), for: .normal)
+    button.addTarget(self, action: #selector(handleMoreInfo), for: .touchUpInside)
+    return button
+  }()
   
   fileprivate let imageView = UIImageView(image: #imageLiteral(resourceName: "lady5c"))
   fileprivate let gradientLayer = CAGradientLayer()
@@ -86,6 +99,10 @@ class CardView: UIView {
     }    
   }
   
+  @objc fileprivate func handleMoreInfo() {    
+    delegate?.didTapMoreInfo()
+  }
+  
   // MARK: - Helper Methods
   fileprivate func handleChanged(_ gesture: UIPanGestureRecognizer) {
     let translation = gesture.translation(in: nil)
@@ -135,6 +152,9 @@ class CardView: UIView {
     informationLabel.anchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 0, left: 16, bottom: 16, right: 16))
     informationLabel.textColor = .white
     informationLabel.numberOfLines = 0
+    
+    addSubview(moreInfoButton)
+    moreInfoButton.anchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor , padding: .init(top: 0, left: 0, bottom: 16, right: 16), size: .init(width: 44, height: 44))
   }
   
   fileprivate func setupBarsStackView() {

@@ -31,6 +31,7 @@
 		541CD0BD259339E600D97DCF /* Firebase+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541CD0BC259339E600D97DCF /* Firebase+Utils.swift */; };
 		541CD0C325939F1100D97DCF /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541CD0C225939F1100D97DCF /* LoginController.swift */; };
 		541CD0C52593A16100D97DCF /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541CD0C42593A16100D97DCF /* LoginViewModel.swift */; };
+		541CD0C825945DB000D97DCF /* UserDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541CD0C725945DB000D97DCF /* UserDetailsController.swift */; };
 		DEB2B66AA7C953BD73985FDF /* Pods_SwipeMatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F0F597C962C6956D32A48E3 /* Pods_SwipeMatch.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		541CD0BC259339E600D97DCF /* Firebase+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Firebase+Utils.swift"; sourceTree = "<group>"; };
 		541CD0C225939F1100D97DCF /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		541CD0C42593A16100D97DCF /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		541CD0C725945DB000D97DCF /* UserDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsController.swift; sourceTree = "<group>"; };
 		9221340A45A5A6B59D63F410 /* Pods-SwipeMatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwipeMatch.release.xcconfig"; path = "Target Support Files/Pods-SwipeMatch/Pods-SwipeMatch.release.xcconfig"; sourceTree = "<group>"; };
 		B1B6CC8469188B761D584501 /* Pods-SwipeMatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwipeMatch.debug.xcconfig"; path = "Target Support Files/Pods-SwipeMatch/Pods-SwipeMatch.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -176,6 +178,7 @@
 		541CD0A9258E269500D97DCF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				541CD0C625945DA100D97DCF /* User Details */,
 				541CD0C125939F0300D97DCF /* Login */,
 				541CD086258DEB3300D97DCF /* HomeViewController.swift */,
 				541CD0AC258F17E800D97DCF /* RegistrationController.swift */,
@@ -191,6 +194,14 @@
 				541CD0C42593A16100D97DCF /* LoginViewModel.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		541CD0C625945DA100D97DCF /* User Details */ = {
+			isa = PBXGroup;
+			children = (
+				541CD0C725945DB000D97DCF /* UserDetailsController.swift */,
+			);
+			path = "User Details";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,6 +327,7 @@
 				541CD087258DEB3300D97DCF /* HomeViewController.swift in Sources */,
 				541CD083258DEB3300D97DCF /* AppDelegate.swift in Sources */,
 				541CD09B258DF20B00D97DCF /* HomeBottomControlsStackView.swift in Sources */,
+				541CD0C825945DB000D97DCF /* UserDetailsController.swift in Sources */,
 				541CD0BB25931D9100D97DCF /* AgeRangeCell.swift in Sources */,
 				541CD0C52593A16100D97DCF /* LoginViewModel.swift in Sources */,
 				541CD0A5258E1FD000D97DCF /* User.swift in Sources */,

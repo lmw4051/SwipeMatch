@@ -136,6 +136,7 @@ class HomeViewController: UIViewController {
   
   fileprivate func setupCardFromUser(user: User) {
     let cardView = CardView(frame: .zero)
+    cardView.delegate = self
     cardView.cardViewModel = user.toCardViewModel()
     cardsDeckView.addSubview(cardView)
     cardsDeckView.sendSubviewToBack(cardView)
@@ -152,5 +153,12 @@ extension HomeViewController: SettingsControllerDelegate {
 extension HomeViewController: LoginControllerDelegate {
   func didFinishLoggingIn() {
     fetchCurrentUser()
+  }
+}
+
+extension HomeViewController: CardViewDelegate {
+  func didTapMoreInfo() {
+    let userDetailsController = UserDetailsController()
+    present(userDetailsController, animated: true)
   }
 }
