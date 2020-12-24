@@ -57,6 +57,9 @@ class SettingsController: UITableViewController {
   
   var user: User?
   
+  static let defaultMinSeekingAge = 18
+  static let defaultMaxSeekingAge = 50
+  
   // MARK: - View Life Cycles
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -254,8 +257,13 @@ extension SettingsController {
       ageRangeCell.minSlider.addTarget(self, action: #selector(handleMinAgeChange), for: .valueChanged)
       ageRangeCell.maxSlider.addTarget(self, action: #selector(handleMaxAgeChange), for: .valueChanged)
       
-      ageRangeCell.minLabel.text = "Min \(user?.minSeekingAge ?? -1)"
-      ageRangeCell.maxLabel.text = "Max \(user?.maxSeekingAge ?? -1)"
+      let minAge = user?.minSeekingAge ?? SettingsController.defaultMinSeekingAge
+      let maxAge = user?.maxSeekingAge ?? SettingsController.defaultMaxSeekingAge
+      
+      ageRangeCell.minLabel.text = "Min \(minAge)"
+      ageRangeCell.maxLabel.text = "Max \(maxAge)"
+      ageRangeCell.minSlider.value = Float(minAge)
+      ageRangeCell.maxSlider.value = Float(maxAge)
       return ageRangeCell
     }
     

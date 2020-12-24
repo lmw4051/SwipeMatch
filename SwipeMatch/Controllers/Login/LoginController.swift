@@ -99,6 +99,7 @@ class LoginController: UIViewController {
       
       if let err = err {
         print("Failed to log in:", err)
+        self.loginHUD.textLabel.text = err.localizedDescription
         return
       }
       

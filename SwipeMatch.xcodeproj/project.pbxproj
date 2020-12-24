@@ -152,8 +152,7 @@
 				541CD09E258DFD7000D97DCF /* CardView.swift */,
 				541CD09C258DF71C00D97DCF /* TopNavigationStackView.swift */,
 				541CD0AE258F1D5900D97DCF /* CustomTextField.swift */,
-				541CD0B82592520800D97DCF /* SettingsCell.swift */,
-				541CD0BA25931D9000D97DCF /* AgeRangeCell.swift */,
+				541CD0CB2594C67500D97DCF /* Cell */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -205,6 +204,15 @@
 				541CD0C9259478F900D97DCF /* SwipingPhotosController.swift */,
 			);
 			path = "User Details";
+			sourceTree = "<group>";
+		};
+		541CD0CB2594C67500D97DCF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				541CD0B82592520800D97DCF /* SettingsCell.swift */,
+				541CD0BA25931D9000D97DCF /* AgeRangeCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
