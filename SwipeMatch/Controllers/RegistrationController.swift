@@ -255,6 +255,10 @@ class RegistrationController: UIViewController {
         return
       }
       print("Finished registering our user")
+      
+      self.dismiss(animated: true) {
+        self.delegate?.didFinishLoggingIn()
+      }
     }
   }
   

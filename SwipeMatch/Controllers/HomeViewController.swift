@@ -105,12 +105,9 @@ class HomeViewController: UIViewController {
   }
   
   fileprivate func fetchUsersFromFirestore() {
-//    guard let minAge = user?.minSeekingAge,
-//      let maxAge = user?.maxSeekingAge else { return }
-    
-//    let query = Firestore.firestore().collection("users").whereField("age", isGreaterThanOrEqualTo: minAge).whereField("age", isLessThanOrEqualTo: maxAge)
-    
-    let query = Firestore.firestore().collection("users")
+    let minAge = user?.minSeekingAge ?? 18
+    let maxAge = user?.maxSeekingAge ?? 40
+    let query = Firestore.firestore().collection("users").whereField("age", isGreaterThanOrEqualTo: minAge).whereField("age", isLessThanOrEqualTo: maxAge)
     
     query.getDocuments { (snapshot, err) in
       self.hud.dismiss()
@@ -127,9 +124,6 @@ class HomeViewController: UIViewController {
         if user.uid != Auth.auth().currentUser?.uid {
           self.setupCardFromUser(user: user)
         }
-        
-//        self.cardViewModels.append(user.toCardViewModel())
-//        self.lastFetchedUser = user
       })
     }
   }
