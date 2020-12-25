@@ -34,6 +34,7 @@
 		541CD0C825945DB000D97DCF /* UserDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541CD0C725945DB000D97DCF /* UserDetailsController.swift */; };
 		541CD0CA259478F900D97DCF /* SwipingPhotosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541CD0C9259478F900D97DCF /* SwipingPhotosController.swift */; };
 		541CD0CD2594DE7C00D97DCF /* PhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541CD0CC2594DE7C00D97DCF /* PhotoController.swift */; };
+		541CD0CF2595D4E500D97DCF /* MatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541CD0CE2595D4E500D97DCF /* MatchView.swift */; };
 		DEB2B66AA7C953BD73985FDF /* Pods_SwipeMatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F0F597C962C6956D32A48E3 /* Pods_SwipeMatch.framework */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +69,7 @@
 		541CD0C725945DB000D97DCF /* UserDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsController.swift; sourceTree = "<group>"; };
 		541CD0C9259478F900D97DCF /* SwipingPhotosController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingPhotosController.swift; sourceTree = "<group>"; };
 		541CD0CC2594DE7C00D97DCF /* PhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoController.swift; sourceTree = "<group>"; };
+		541CD0CE2595D4E500D97DCF /* MatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchView.swift; sourceTree = "<group>"; };
 		9221340A45A5A6B59D63F410 /* Pods-SwipeMatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwipeMatch.release.xcconfig"; path = "Target Support Files/Pods-SwipeMatch/Pods-SwipeMatch.release.xcconfig"; sourceTree = "<group>"; };
 		B1B6CC8469188B761D584501 /* Pods-SwipeMatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwipeMatch.debug.xcconfig"; path = "Target Support Files/Pods-SwipeMatch/Pods-SwipeMatch.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,11 +152,12 @@
 		541CD099258DF1EE00D97DCF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				541CD0CB2594C67500D97DCF /* Cell */,
 				541CD09A258DF20B00D97DCF /* HomeBottomControlsStackView.swift */,
 				541CD09E258DFD7000D97DCF /* CardView.swift */,
 				541CD09C258DF71C00D97DCF /* TopNavigationStackView.swift */,
 				541CD0AE258F1D5900D97DCF /* CustomTextField.swift */,
-				541CD0CB2594C67500D97DCF /* Cell */,
+				541CD0CE2595D4E500D97DCF /* MatchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				541CD09B258DF20B00D97DCF /* HomeBottomControlsStackView.swift in Sources */,
 				541CD0C825945DB000D97DCF /* UserDetailsController.swift in Sources */,
 				541CD0BB25931D9100D97DCF /* AgeRangeCell.swift in Sources */,
+				541CD0CF2595D4E500D97DCF /* MatchView.swift in Sources */,
 				541CD0C52593A16100D97DCF /* LoginViewModel.swift in Sources */,
 				541CD0A5258E1FD000D97DCF /* User.swift in Sources */,
 				541CD0B72592497A00D97DCF /* SettingsController.swift in Sources */,

@@ -138,7 +138,9 @@ class HomeController: UIViewController {
         let userDictionary = documentSnapshot.data()
         let user = User(dictionary: userDictionary)
         let isNotCurrentUser = user.uid != Auth.auth().currentUser?.uid
-        let hasNotSwipedBefore = self.swipes[user.uid!] == nil
+//        let hasNotSwipedBefore = self.swipes[user.uid!] == nil
+        
+        let hasNotSwipedBefore = true
         
         if isNotCurrentUser && hasNotSwipedBefore {
           let cardView = self.setupCardFromUser(user: user)
@@ -209,7 +211,10 @@ class HomeController: UIViewController {
             return
           }
           print("Successfully updated swipe...")
-          self.checkIfMatchExists(cardUID: cardUID)
+          
+          if didLike == 1 {
+            self.checkIfMatchExists(cardUID: cardUID)
+          }
         }
       } else {
         Firestore.firestore().collection("swipes").document(uid).setData(documentData) { err in
@@ -218,7 +223,10 @@ class HomeController: UIViewController {
             return
           }
           print("Successfully saved swipe...")
-          self.checkIfMatchExists(cardUID: cardUID)
+          
+          if didLike == 1 {
+            self.checkIfMatchExists(cardUID: cardUID)
+          }
         }
       }
     }
@@ -243,12 +251,15 @@ class HomeController: UIViewController {
       
       if hasMatched {
         print("Has matched")
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "Found a match"
-        hud.show(in: self.view)
-        hud.dismiss(afterDelay: 4)
+        self.presentMatchView(cardUI: cardUID)
       }
     }
+  }
+  
+  fileprivate func presentMatchView(cardUI: String) {
+    let matchView = MatchView()    
+    view.addSubview(matchView)
+    matchView.fillSuperview()
   }
   
   // MARK: - Selector Methods
@@ -261,6 +272,7 @@ class HomeController: UIViewController {
   }
   
   @objc func handleRefresh() {
+    cardsDeckView.subviews.forEach { $0.removeFromSuperview() }
     fetchUsersFromFirestore()
   }
   
