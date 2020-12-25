@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		541CD083258DEB3300D97DCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541CD082258DEB3300D97DCF /* AppDelegate.swift */; };
 		541CD085258DEB3300D97DCF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541CD084258DEB3300D97DCF /* SceneDelegate.swift */; };
-		541CD087258DEB3300D97DCF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541CD086258DEB3300D97DCF /* HomeViewController.swift */; };
+		541CD087258DEB3300D97DCF /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541CD086258DEB3300D97DCF /* HomeController.swift */; };
 		541CD08A258DEB3300D97DCF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 541CD088258DEB3300D97DCF /* Main.storyboard */; };
 		541CD08C258DEB3400D97DCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 541CD08B258DEB3400D97DCF /* Assets.xcassets */; };
 		541CD08F258DEB3400D97DCF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 541CD08D258DEB3400D97DCF /* LaunchScreen.storyboard */; };
@@ -42,7 +42,7 @@
 		541CD07F258DEB3300D97DCF /* SwipeMatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwipeMatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		541CD082258DEB3300D97DCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		541CD084258DEB3300D97DCF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		541CD086258DEB3300D97DCF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		541CD086258DEB3300D97DCF /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		541CD089258DEB3300D97DCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		541CD08B258DEB3400D97DCF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		541CD08E258DEB3400D97DCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -183,7 +183,7 @@
 			children = (
 				541CD0C625945DA100D97DCF /* User Details */,
 				541CD0C125939F0300D97DCF /* Login */,
-				541CD086258DEB3300D97DCF /* HomeViewController.swift */,
+				541CD086258DEB3300D97DCF /* HomeController.swift */,
 				541CD0AC258F17E800D97DCF /* RegistrationController.swift */,
 				541CD0B62592497A00D97DCF /* SettingsController.swift */,
 			);
@@ -339,7 +339,7 @@
 				541CD0BD259339E600D97DCF /* Firebase+Utils.swift in Sources */,
 				541CD0AB258E2CE600D97DCF /* Advertiser.swift in Sources */,
 				541CD09F258DFD7000D97DCF /* CardView.swift in Sources */,
-				541CD087258DEB3300D97DCF /* HomeViewController.swift in Sources */,
+				541CD087258DEB3300D97DCF /* HomeController.swift in Sources */,
 				541CD083258DEB3300D97DCF /* AppDelegate.swift in Sources */,
 				541CD09B258DF20B00D97DCF /* HomeBottomControlsStackView.swift in Sources */,
 				541CD0C825945DB000D97DCF /* UserDetailsController.swift in Sources */,

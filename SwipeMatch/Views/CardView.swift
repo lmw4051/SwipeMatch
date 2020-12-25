@@ -11,21 +11,16 @@ import SDWebImage
 
 protocol CardViewDelegate {
   func didTapMoreInfo(cardViewModel: CardViewModel)
+  func didRemoveCard(cardView: CardView)
 }
 
 class CardView: UIView {
   // MARK: - Instance Properties
+  var nextCardView: CardView?
   var delegate: CardViewDelegate?
   
   var cardViewModel: CardViewModel! {
     didSet {
-      // accessing index 0 will crash if imageNames.count == 0
-//      let imageName = cardViewModel.imageUrls.first ?? ""
-      
-//      if let url = URL(string: imageName) {
-//        imageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "photo_placeholder"), options: .continueInBackground)
-//      }
-      
       swipingPhotosController.cardViewModel = self.cardViewModel
       
       informationLabel.attributedText = cardViewModel.attributedString
@@ -49,7 +44,6 @@ class CardView: UIView {
     return button
   }()
   
-//  fileprivate let imageView = UIImageView(image: #imageLiteral(resourceName: "lady5c"))
   fileprivate let swipingPhotosController = SwipingPhotosController(isCardViewMode: true)
   fileprivate let gradientLayer = CAGradientLayer()
   fileprivate let informationLabel = UILabel()
@@ -133,6 +127,9 @@ class CardView: UIView {
       
       if shouldDismissCard {
         self.removeFromSuperview()
+        
+        // reset topCardView inside of HomeController
+        self.delegate?.didRemoveCard(cardView: self)
       }
     }
   }

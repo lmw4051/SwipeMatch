@@ -23,12 +23,15 @@ class HomeController: UIViewController {
   fileprivate var user: User?
   fileprivate let hud = JGProgressHUD(style: .dark)
   
+  var topCardView: CardView?
+  
   // MARK: - View Life Cycles
   override func viewDidLoad() {
     super.viewDidLoad()
     
     topStackView.settingsButton.addTarget(self, action: #selector(handleSettings), for: .touchUpInside)
     bottomControls.refreshButton.addTarget(self, action: #selector(handleRefresh), for: .touchUpInside)
+    bottomControls.likeButton.addTarget(self, action: #selector(handleLike), for: .touchUpInside)
     
     setupLayout()
     fetchCurrentUser()
@@ -68,19 +71,6 @@ class HomeController: UIViewController {
     }
   }
   
-  // MARK: - Selector Methods
-  @objc func handleSettings() {
-    let settingsController = SettingsController()
-    settingsController.delegate = self
-    let navController = UINavigationController(rootViewController: settingsController)
-    navController.modalPresentationStyle = .fullScreen
-    present(navController, animated: true)
-  }
-  
-  @objc fileprivate func handleRefresh() {
-    fetchUsersFromFirestore()
-  }
-  
   // MARK: - Helper Methods
   fileprivate func setupLayout() {
     view.backgroundColor = .white
@@ -118,39 +108,78 @@ class HomeController: UIViewController {
         return
       }
       
+      var previousCardView: CardView?
+      
       snapshot?.documents.forEach({ documentSnapshot in
         let userDictionary = documentSnapshot.data()
         let user = User(dictionary: userDictionary)
         
         if user.uid != Auth.auth().currentUser?.uid {
-          self.setupCardFromUser(user: user)
+          let cardView = self.setupCardFromUser(user: user)
+          
+          previousCardView?.nextCardView = cardView
+          previousCardView = cardView
+          
+          if self.topCardView == nil {
+            self.topCardView = cardView
+          }
         }
       })
     }
   }
   
-  fileprivate func setupCardFromUser(user: User) {
+  fileprivate func setupCardFromUser(user: User) -> CardView {
     let cardView = CardView(frame: .zero)
     cardView.delegate = self
     cardView.cardViewModel = user.toCardViewModel()
     cardsDeckView.addSubview(cardView)
     cardsDeckView.sendSubviewToBack(cardView)
     cardView.fillSuperview()
+    return cardView
+  }
+  
+  // MARK: - Selector Methods
+  @objc func handleSettings() {
+    let settingsController = SettingsController()
+    settingsController.delegate = self
+    let navController = UINavigationController(rootViewController: settingsController)
+    navController.modalPresentationStyle = .fullScreen
+    present(navController, animated: true)
+  }
+  
+  @objc fileprivate func handleRefresh() {
+    fetchUsersFromFirestore()
+  }
+  
+  @objc fileprivate func handleLike() {
+    print("handleLike")
+            
+    UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: .curveEaseOut, animations: {
+      self.topCardView?.frame = CGRect(x: 600, y: 0, width: self.topCardView!.frame.width, height: self.topCardView!.frame.height)
+      let angle = 15 * CGFloat.pi / 180
+      self.topCardView?.transform = CGAffineTransform(rotationAngle: angle)
+    }) { _ in
+      self.topCardView?.removeFromSuperview()
+      self.topCardView = self.topCardView?.nextCardView
+    }
   }
 }
 
+// MARK: - SettingsControllerDelegate Methods
 extension HomeController: SettingsControllerDelegate {
   func didSaveSettings() {
     fetchCurrentUser()
   }
 }
 
+// MARK: - LoginControllerDelegate Methods
 extension HomeController: LoginControllerDelegate {
   func didFinishLoggingIn() {
     fetchCurrentUser()
   }
 }
 
+// MARK: - CardViewDelegate Methods
 extension HomeController: CardViewDelegate {
   func didTapMoreInfo(cardViewModel: CardViewModel) {
     print("didTapMoreInfo:", cardViewModel.attributedString)
@@ -158,5 +187,10 @@ extension HomeController: CardViewDelegate {
     userDetailsController.cardViewModel = cardViewModel
     userDetailsController.modalPresentationStyle = .fullScreen
     present(userDetailsController, animated: true)
+  }
+  
+  func didRemoveCard(cardView: CardView) {
+    self.topCardView?.removeFromSuperview()
+    self.topCardView = self.topCardView?.nextCardView
   }
 }
