@@ -21,7 +21,7 @@ struct Advertiser: ProducesCardViewModel {
       string: "\n" + brandName,
       attributes: [.font: UIFont.systemFont(ofSize: 24, weight: .bold)]))
     
-    return CardViewModel(imageNames: [posterPhotoName],
+    return CardViewModel(uid: "", imageNames: [posterPhotoName],
                          attributedString: attributedString,
                          textAlignment: .center)
   }
