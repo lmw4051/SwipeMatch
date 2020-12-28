@@ -251,13 +251,15 @@ class HomeController: UIViewController {
       
       if hasMatched {
         print("Has matched")
-        self.presentMatchView(cardUI: cardUID)
+        self.presentMatchView(cardUID: cardUID)
       }
     }
   }
   
-  fileprivate func presentMatchView(cardUI: String) {
-    let matchView = MatchView()    
+  fileprivate func presentMatchView(cardUID: String) {
+    let matchView = MatchView()
+    matchView.cardUID = cardUID
+    matchView.currentUser = self.user
     view.addSubview(matchView)
     matchView.fillSuperview()
   }

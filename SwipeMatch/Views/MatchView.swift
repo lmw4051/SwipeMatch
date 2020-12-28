@@ -7,11 +7,47 @@
 //
 
 import UIKit
+import Firebase
 
 class MatchView: UIView {
     
   // MARK: - Instance Properties
+  var currentUser: User!
+  
+  var cardUID: String! {
+    didSet {
+      let query = Firestore.firestore().collection("users")
+      query.document(cardUID).getDocument { (snapshot, err) in
+        if let err = err {
+          print("Failed to fetch card user:", err)
+          return
+        }
+        
+        guard let dictionary = snapshot?.data() else { return }
+        let user = User(dictionary: dictionary)
+        guard let url = URL(string: user.imageUrl1 ?? "") else { return }
+        self.cardUserImageView.sd_setImage(with: url)
+        
+        guard let currentUserImageUrl = URL(string: self.currentUser.imageUrl1 ?? "") else { return }
+        self.currentUserImageView.sd_setImage(with: currentUserImageUrl) { (_, _, _, _) in
+          self.setupAnimations()
+        }
+        
+        // setup the description label text
+        self.descriptionLabel.text = "You and \(user.name ?? "") have liked\neach other"
+      }
+    }
+  }
+  
   let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+  lazy var views = [
+    itsAMatchImageView,
+    descriptionLabel,
+    currentUserImageView,
+    cardUserImageView,
+    sendMessageButton,
+    keepSwipingButton
+  ]
   
   fileprivate let itsAMatchImageView: UIImageView = {
     let iv = UIImageView(image: #imageLiteral(resourceName: "itsamatch"))
@@ -21,7 +57,6 @@ class MatchView: UIView {
   
   fileprivate let descriptionLabel: UILabel = {
     let label = UILabel()
-    label.text = "You and X have liked\neach other"
     label.textAlignment = .center
     label.textColor = .white
     label.font = .systemFont(ofSize: 20)
@@ -66,7 +101,7 @@ class MatchView: UIView {
     super.init(frame: frame)
     setupBlurView()
     setupLayout()
-    setupAnimations()
+//    setupAnimations()
   }
   
   required init?(coder: NSCoder) {
@@ -89,12 +124,17 @@ class MatchView: UIView {
   }
   
   fileprivate func setupLayout() {
-    addSubview(itsAMatchImageView)
-    addSubview(descriptionLabel)
-    addSubview(currentUserImageView)
-    addSubview(cardUserImageView)
-    addSubview(sendMessageButton)
-    addSubview(keepSwipingButton)
+    views.forEach { v in
+      addSubview(v)
+      v.alpha = 0
+    }
+    
+//    addSubview(itsAMatchImageView)
+//    addSubview(descriptionLabel)
+//    addSubview(currentUserImageView)
+//    addSubview(cardUserImageView)
+//    addSubview(sendMessageButton)
+//    addSubview(keepSwipingButton)
     
     let imageWidth: CGFloat = 140
     
@@ -117,6 +157,8 @@ class MatchView: UIView {
   }
   
   fileprivate func setupAnimations() {
+    views.forEach({ $0.alpha = 1 })
+    
     // Starting Positions
     let angle = 30 * CGFloat.pi / 180
     
@@ -127,7 +169,7 @@ class MatchView: UIView {
     keepSwipingButton.transform = CGAffineTransform(translationX: 500, y: 0)
     
     // Keyframe animations for segmented animation
-    UIView.animateKeyframes(withDuration: 1.3, delay: 0, options: .calculationModeCubic, animations: {
+    UIView.animateKeyframes(withDuration: 1.0, delay: 0, options: .calculationModeCubic, animations: {
       // Animation 1 - translation back to original position
       UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.45) {
         self.currentUserImageView.transform = CGAffineTransform(rotationAngle: -angle)
