@@ -66,6 +66,7 @@ class MatchView: UIView {
     super.init(frame: frame)
     setupBlurView()
     setupLayout()
+    setupAnimations()
   }
   
   required init?(coder: NSCoder) {
@@ -113,6 +114,39 @@ class MatchView: UIView {
     sendMessageButton.anchor(top: currentUserImageView.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 32, left: 48, bottom: 0, right: 48), size: .init(width: 0, height: 60))
     
     keepSwipingButton.anchor(top: sendMessageButton.bottomAnchor, leading: sendMessageButton.leadingAnchor, bottom: nil, trailing: sendMessageButton.trailingAnchor, padding: .init(top: 16, left: 0, bottom: 0, right: 0), size: .init(width: 0, height: 60))
+  }
+  
+  fileprivate func setupAnimations() {
+    // Starting Positions
+    let angle = 30 * CGFloat.pi / 180
+    
+    currentUserImageView.transform = CGAffineTransform(rotationAngle: -angle).concatenating(CGAffineTransform(translationX: 200, y: 0))
+    cardUserImageView.transform = CGAffineTransform(rotationAngle: angle).concatenating(CGAffineTransform(translationX: -200, y: 0))
+    
+    sendMessageButton.transform = CGAffineTransform(translationX: -500, y: 0)
+    keepSwipingButton.transform = CGAffineTransform(translationX: 500, y: 0)
+    
+    // Keyframe animations for segmented animation
+    UIView.animateKeyframes(withDuration: 1.3, delay: 0, options: .calculationModeCubic, animations: {
+      // Animation 1 - translation back to original position
+      UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.45) {
+        self.currentUserImageView.transform = CGAffineTransform(rotationAngle: -angle)
+        self.cardUserImageView.transform = CGAffineTransform(rotationAngle: angle)
+      }
+      
+      // Animation 2 - rotation
+      UIView.addKeyframe(withRelativeStartTime: 0.6, relativeDuration: 0.4) {
+        self.currentUserImageView.transform = .identity
+        self.cardUserImageView.transform = .identity
+      }
+    }) { _ in
+      
+    }
+    
+    UIView.animate(withDuration: 0.75, delay: 0.6 * 1.3, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.1, options: .curveEaseOut, animations: {
+      self.sendMessageButton.transform = .identity
+      self.keepSwipingButton.transform = .identity
+    })
   }
   
   // MARK: - Selector Methods
